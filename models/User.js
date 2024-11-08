@@ -3,7 +3,12 @@ const { db, DataTypes } = require('../db/connection')
 
 // Creating a User child class from the Model parent class
 const User = db.define('users', {
-  username: DataTypes.STRING,
+  username: {
+    type: DataTypes.STRING,
+    validate: {
+      isEmail: true
+    }
+  },
   password: DataTypes.STRING
 })
 
